@@ -24,12 +24,12 @@ export function Layout({ children }) {
             <Link to="/" className={`${isHome ? 'text-brand-400' : 'hover:text-slate-200'} transition-colors`}>
               Marketplace
             </Link>
-            <a href="#" className="hover:text-slate-200 transition-colors flex items-center gap-1">
+            <Link to="/" className="hover:text-slate-200 transition-colors flex items-center gap-1">
               <Activity className="w-4 h-4" /> Trending
-            </a>
-            <a href="#" className="hover:text-slate-200 transition-colors flex items-center gap-1">
+            </Link>
+            <Link to="/" className="hover:text-slate-200 transition-colors flex items-center gap-1">
               <Code className="w-4 h-4" /> Open Source
-            </a>
+            </Link>
           </div>
           
           <div className="flex items-center gap-4">

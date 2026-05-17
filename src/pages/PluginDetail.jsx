@@ -1,6 +1,7 @@
 import React, { useMemo } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { usePlugins } from '../hooks/usePlugins';
+import { SEO } from '../components/SEO';
 import { 
   ArrowLeft, Star, Download, Clock, User, Code, AlertCircle, CheckCircle2 
 } from 'lucide-react';
@@ -27,6 +28,7 @@ export function PluginDetail() {
   if (error || !plugin) {
     return (
       <div className="text-center py-20">
+        <SEO title="Plugin Not Found - PHP Plugin Hub" />
         <h2 className="text-2xl font-bold text-slate-100 mb-4">Plugin not found</h2>
         <Link to="/" className="btn-primary">Return Home</Link>
       </div>
@@ -35,6 +37,11 @@ export function PluginDetail() {
 
   return (
     <div className="space-y-6 animate-in slide-in-from-bottom-4 duration-500 fade-in">
+      <SEO 
+        title={`${plugin.name} - ${plugin.platform} Plugin Analytics | PHP Plugin Hub`}
+        description={plugin.description}
+        url={`https://php-plugin-hub.phptutorialpoints.in/plugin/${plugin.id}`}
+      />
       {/* Breadcrumb / Back Navigation */}
       <Link to="/" className="inline-flex items-center gap-2 text-sm text-slate-400 hover:text-slate-200 transition-colors">
         <ArrowLeft className="w-4 h-4" /> Back to Marketplace
@@ -53,12 +60,16 @@ export function PluginDetail() {
             <p className="text-lg text-slate-300 max-w-3xl">{plugin.description}</p>
           </div>
           <div className="flex gap-3">
-            <button className="btn-primary">
-              <Download className="w-4 h-4 mr-2" /> Install
-            </button>
-            <button className="px-4 py-2 rounded-md font-medium border border-slate-700 bg-slate-800 hover:bg-slate-700 text-slate-200 transition-colors flex items-center gap-2">
-              <Code className="w-4 h-4" /> Source
-            </button>
+            {plugin.link && (
+              <a href={plugin.link} target="_blank" rel="noreferrer" className="btn-primary">
+                <Download className="w-4 h-4 mr-2" /> Install
+              </a>
+            )}
+            {plugin.source && (
+              <a href={plugin.source} target="_blank" rel="noreferrer" className="px-4 py-2 rounded-md font-medium border border-slate-700 bg-slate-800 hover:bg-slate-700 text-slate-200 transition-colors flex items-center gap-2">
+                <Code className="w-4 h-4" /> Source
+              </a>
+            )}
           </div>
         </div>
 

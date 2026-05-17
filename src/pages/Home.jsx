@@ -2,6 +2,7 @@ import React, { useState, useMemo } from 'react';
 import { usePlugins } from '../hooks/usePlugins';
 import { PluginCard } from '../components/PluginCard';
 import { Loader2 } from 'lucide-react';
+import { SEO } from '../components/SEO';
 
 const CATEGORIES = ['All', 'WordPress', 'Laravel', 'Joomla', 'Drupal'];
 
@@ -19,6 +20,7 @@ export function Home() {
 
   return (
     <div className="space-y-8 animate-in fade-in duration-500">
+      <SEO />
       {/* Header section with title and description */}
       <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
         <div className="max-w-2xl">
